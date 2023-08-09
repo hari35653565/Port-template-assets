@@ -12,3 +12,12 @@ variable "invoke_function" {
     error_message = "Invoke function must be either true or false."
   }
 }
+
+variable "schedule_state" {
+  type        = string
+  description = "State of the schedule"
+  validation {
+    condition     = can(regex("^(ENABLED|DISABLED)$", var.schedule_state))
+    error_message = "Schedule state must be either 'ENABLED' or 'DISABLED'."
+  }
+}
